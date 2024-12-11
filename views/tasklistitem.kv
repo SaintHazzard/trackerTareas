@@ -1,0 +1,29 @@
+<TaskListItem>:
+    orientation: 'horizontal'
+    padding: 5
+    spacing: 10
+
+    CheckBox:
+        size_hint_x: 0.1
+        active: root.completed
+        on_active: app.root.on_task_completed(root.task_id, self.active)
+
+    Label:
+        text: root.title
+        size_hint_x: 0.3
+        text_size: self.size
+        halign: 'left'
+        valign: 'middle'
+        color: (1, 0, 0, 1) if not root.completed else (0, 1, 0, 1)
+
+    Label:
+        text: root.description
+        size_hint_x: 0.5  # Espacio más amplio para la descripción
+        text_size: self.size
+        halign: 'left'
+        valign: 'middle'
+
+    Button:
+        text: "Eliminar"
+        size_hint_x: 0.3
+        on_press: app.root.on_task_deleted(root.task_id)

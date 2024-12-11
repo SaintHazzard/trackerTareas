@@ -1,0 +1,35 @@
+#:import RecycleView kivy.uix.recycleview.RecycleView
+#:import Factory kivy.factory.Factory
+#:import RecycleBoxLayout kivy.uix.recycleboxlayout.RecycleBoxLayout
+
+<MainView>:
+    orientation: 'vertical'
+    padding: 10
+    spacing: 10
+    rv: rv
+    input_task: input_task
+
+    BoxLayout:
+        orientation: 'horizontal'
+        TextInput:
+            id: input_task
+            hint_text: "Nueva tarea..."
+            multiline: False
+            on_text_validate: root.add_task()
+        Button:
+            text: "Agregar"
+            size_hint_x: 0.3
+            on_press: root.add_task()
+
+    RecycleView:
+        id: rv
+        viewclass: 'TaskListItem'
+        data: []
+        scroll_type:['bars', 'content']
+        bar_width: 10
+        RecycleBoxLayout:
+            default_size: None, dp(48)
+            default_size_hint: 1, None
+            size_hint_y: None
+            orientation: 'vertical'
+            height: self.minimum_height
