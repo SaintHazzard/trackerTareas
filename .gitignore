@@ -1,3 +1,6 @@
 env/
 env/**
 __pycache__/
+.buildozer/
+bin/
+data.json

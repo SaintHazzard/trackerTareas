@@ -6,7 +6,7 @@
     CheckBox:
         size_hint_x: 0.1
         active: root.completed
-        on_active: app.root.on_task_completed(root.task_id, self.active)
+        on_active: root.handle_checkbox(self.active)
 
     Label:
         text: root.title
@@ -23,7 +23,7 @@
         halign: 'left'
         valign: 'middle'
 
-    Button:
+    HoverButton:
         text: "Eliminar"
         size_hint_x: 0.3
         on_press: app.root.on_task_deleted(root.task_id)

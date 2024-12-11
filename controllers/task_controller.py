@@ -6,9 +6,9 @@ class TaskController:
     def __init__(self):
         self.db = SessionLocal()
 
-    def add_task(self, text):
-        if text.strip():
-            create_task(text.strip(), completed=False)
+    def add_task(self, title, description,completed = False):
+        if title.strip():
+            create_task(title=title.strip(), description=description.strip(), completed=completed)
             return True
         return False
 
@@ -26,19 +26,8 @@ class TaskController:
         return task.completed if task else None
 
     def get_task_by_id(self, task_id):
-        print(task_id)
-        return self.get_or_none(Task.id == task_id)
+        return self.db.query(Task).filter(Task.id == task_id).first()
 
-    def get_or_none(self, model, **kwargs):
-        try:
-            query = self.db.query(model).filter(*[getattr(model, key) == value for key, value in kwargs.items()])
-            compiled_query = query.statement.compile(dialect=self.db.bind.dialect)
-            print("Consulta generada:", compiled_query)
-            print("Parámetros:", compiled_query.params)
-            return query.one_or_none()
-        except Exception as e:
-            print("Error al ejecutar la consulta:", e)
-            raise
 
 
 

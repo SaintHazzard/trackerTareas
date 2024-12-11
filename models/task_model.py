@@ -4,15 +4,16 @@ from models.database import Base, SessionLocal, init_db
 class Task(Base):
     __tablename__ = 'tasks'
     id = Column(Integer, primary_key=True, index=True)
-    text = Column(String, nullable=False)
+    title = Column(String, nullable=False)
+    description = Column(String, nullable=False)
     completed = Column(Boolean, default=False)
 
 
 init_db()
 
-def create_task(text, completed=False):
+def create_task(title,description, completed=False):
     session = SessionLocal()
-    new_task = Task(text=text, completed=completed)
+    new_task = Task(title=title, description=description, completed=completed)
     session.add(new_task)
     session.commit()
     session.close()

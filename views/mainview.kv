@@ -8,17 +8,30 @@
     spacing: 10
     rv: rv
     input_task: input_task
+    input_description: input_description
 
     BoxLayout:
         orientation: 'horizontal'
+        size_hint_y: None
+        height: dp(50)  
+        spacing: 10
+
         TextInput:
             id: input_task
-            hint_text: "Nueva tarea..."
+            hint_text: "Titulo de la tarea"
             multiline: False
-            on_text_validate: root.add_task()
+            size_hint_x: 0.2
+            size_hint_y: 1
+        TextInput:
+            id: input_description
+            hint_text: "Descripcion tarea"
+            multiline: False
+            size_hint_x: 0.4
+            size_hint_y: 1
         Button:
             text: "Agregar"
             size_hint_x: 0.3
+            size_hint_y: 1
             on_press: root.add_task()
 
     RecycleView:
@@ -33,3 +46,20 @@
             size_hint_y: None
             orientation: 'vertical'
             height: self.minimum_height
+    
+    AnchorLayout:  # Botones centrados en la parte inferior
+        size_hint_y: None
+        height: dp(60)
+
+        BoxLayout:
+            size_hint: None, None
+            size: dp(200), dp(50)
+            spacing: dp(10)
+
+            Button:
+                text: "Importar"
+                on_press: root.import_data()
+
+            Button:
+                text: "Exportar"
+                on_press: root.export_data()
