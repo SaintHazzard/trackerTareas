@@ -4,3 +4,5 @@ __pycache__/
 .buildozer/
 bin/
 data.json
+.scannerwork
+.scannerwork/**
