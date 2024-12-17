@@ -13,7 +13,7 @@ Clona el repositorio y navega al directorio del proyecto:
 
 ```bash
 git clone https://github.com/SaintHazzard/trackerTareas
-cd trackerTareasOrg
+cd trackerTareas
 ```
 
 Ejecuta el archivo setup_env_windows.bat del proyecto
