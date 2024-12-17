@@ -12,7 +12,7 @@ Para ejecutar la aplicación, asegúrate de tener **Python** y **Kivy** instalad
 Clona el repositorio y navega al directorio del proyecto:
 
 ```bash
-git clone https://github.com/SaintHazzard/trackerTareasOrg
+git clone https://github.com/SaintHazzard/trackerTareas
 cd trackerTareasOrg
 ```
 
